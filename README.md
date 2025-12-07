@@ -1,2 +1,4 @@
 # ComputerArchFall-25
-Project (1) - RISC-V pipelined implementation 
+Project (2) - femTomas”: Tomasulo Algorithm Simulator
+
+
