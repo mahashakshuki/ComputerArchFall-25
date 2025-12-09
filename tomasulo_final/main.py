@@ -1,7 +1,7 @@
 # main.py
 
 from instruction import Instruction
-import state 
+import state
 from engine import run_simulation
 from cdb import cdb_broadcast
 

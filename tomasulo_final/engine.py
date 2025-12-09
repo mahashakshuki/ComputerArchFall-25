@@ -1,7 +1,8 @@
-# engine.py
-import state 
 from issue import issue
+import state 
 from commit import commit
+from execute import execute
+from write import write
 
 def run_simulation():
 
@@ -9,12 +10,14 @@ def run_simulation():
 
         print(f"\nCYCLE {state.cycle}: PC={state.PC}, ROB_count={state.rob_count}")
 
+        # Order: COMMIT → WRITE → EXECUTE → ISSUE
         commit()
+        write()
+        execute()
         issue()
 
         state.cycle += 1
 
-        # End condition: no more instructions & ROB empty
         if state.PC >= len(state.instruction_queue) and state.rob_count == 0:
             state.simulation_done = True
 

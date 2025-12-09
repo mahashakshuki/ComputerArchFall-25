@@ -17,3 +17,15 @@ cycle = 0
 simulation_done = False
 
 instruction_queue = []
+issue_cycle = {}
+exec_start = {}
+exec_end = {}
+write_cycle = {}
+commit_cycle = {}
+
+# Placeholder for Reservation Stations (Member B will fill this)
+reservation_stations = []
+
+def clear_reservation_stations():
+    for rs in reservation_stations:
+        rs.clear()

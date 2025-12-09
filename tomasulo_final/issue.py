@@ -14,6 +14,9 @@ def issue():
     instr = state.instruction_queue[state.PC]
     rob_id = state.rob_tail
     entry = state.ROB[rob_id]
+    
+
+
 
     entry.busy = True
     entry.op = instr.op
@@ -28,5 +31,6 @@ def issue():
         state.reg_status[instr.dest] = rob_id
 
     print(f"ISSUE: Instruction {instr.op} → ROB[{rob_id}]")
+    state.issue_cycle[state.PC] = state.cycle
 
     state.PC += 1
