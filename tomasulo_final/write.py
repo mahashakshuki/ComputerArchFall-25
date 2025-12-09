@@ -7,8 +7,11 @@ def write():
         if not rs.finished:
             continue
 
+        # Broadcast on CDB using ROB id (ROB index)
         cdb_broadcast(rs.rob_id, rs.result)
 
-        state.write_cycle[rs.rob_id] = state.cycle
+        # Record write cycle keyed by instruction PC
+        state.write_cycle[rs.PC] = state.cycle
 
         rs.clear()
+
