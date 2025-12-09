@@ -1,0 +1,31 @@
+Dec 1, 1:00 - 2:00
+- Project kickoff: read project spec and planned feature list.
+- Created repository structure and started `state.py` with ROB, RS, reg file.
+
+Dec 2, 3:00 - 6:00
+- Implemented `instruction.py` parser: labels, LOAD/STORE/address parsing, BEQ/CALL/RET support.
+- Wrote test assembly file `program1.asm` to cover load/store/ALU/branch/call/ret.
+
+Dec 3, 4:00 - 7:00
+- Implemented `issue.py`: RS allocation, ROB allocation, register renaming, timeline record creation.
+- Debugged register renaming edge cases.
+
+Dec 4, 5:00 - 8:00
+- Implemented `execute.py`: start/advance execution, BEQ resolution, CALL/RET behavior.
+- Wrote `flush.py` to handle pipeline flush on misprediction.
+
+Dec 5, 4:00 - 7:00
+- Implemented `cdb.py` and `writeback.py`: ALU compute, LOAD memory read, store handling, CDB broadcast to RS and ROB.
+- Ran into bug where RS entries had `rob_idx=None`. Used ChatGPT for debugging hints and fixed the ROB allocation order. (Debugging assistance only.)
+
+Dec 6, 5:00 - 9:00
+- Implemented `commit.py` and `engine.py` loop; integrated everything and ran initial tests.
+- Captured timeline output and refined formatting for final timeline table.
+
+Dec 7, 1:00 - 2:00
+- Created two more test programs: one loop (program2.asm) and one MUL-heavy (program3.asm).
+- Ran experiments, recorded cycles and IPC, prepared sample output tables.
+
+Dec 9, 3:00 - 5:00
+- Wrote report.md, README.txt, and assembled deliverables into submission zip.
+- Final cleanup, added comments to code, and ensured timeline recording works.
