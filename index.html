@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Tomasulo Simulator - Web GUI</title>
+
+    <!-- PyScript -->
+    <link rel="stylesheet" href="https://pyscript.net/latest/pyscript.css" />
+    <script defer src="https://pyscript.net/latest/pyscript.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+<h1>Tomasulo Simulator Web GUI</h1>
+
+<div class="container">
+    <h2>Assembly Program</h2>
+    <textarea id="programInput" placeholder="ADD R1, R2, R3"></textarea>
+
+    <h2>Initial Memory (optional)</h2>
+    <textarea id="memoryInput" placeholder="0:5, 1:10"></textarea>
+
+    <button onclick="runSimulation()">Run Simulation</button>
+</div>
+
+<hr>
+
+<h2>Simulation Results</h2>
+<div id="output"></div>
+
+<!-- Load your Python code -->
+<py-env>
+    - web_api
+    - femTomas
+</py-env>
+
+<!-- PyScript functions -->
+<py-script>
+from web_api import run_simulation
+
+def simulate(program: str, mem_text: str):
+    mem = {}
+
+    if mem_text.strip():
+        for pair in mem_text.split(","):
+            addr, val = pair.split(":")
+            mem[int(addr.strip())] = int(val.strip())
+
+    result = run_simulation(program, mem)
+    return result
+</py-script>
+
+<script src="script.js"></script>
+</body>
+</html>
