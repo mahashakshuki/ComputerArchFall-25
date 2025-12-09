@@ -28,7 +28,14 @@ def execute():
 
         # Branch handling
         if rs.op == "BEQ":
-            handle_branch(rs)
-        else:
-            # Normal result → push to write buffer
-            rs.finished = True
+    state.branch_count += 1
+    taken = (rs.vj == rs.vk)
+    predicted_taken = False
+    if taken != predicted_taken:
+        state.branch_mispred += 1
+        correct_target = rs.PC + 1 + rs.offset
+        flush_pipeline(correct_target)
+        return
+    else:
+        # Normal result → push to write buffer
+        rs.finished = True
